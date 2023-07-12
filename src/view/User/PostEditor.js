@@ -1,11 +1,13 @@
-import React, {useState} from "react";
-import MarkDownEditor from "../../components/MarkDownEditor";
-import {ChatIcon} from "@chakra-ui/icons";
-import {MastercardIcon} from "../../components/Icons/Icons";
-import {Button, Flex, Grid} from "@chakra-ui/react";
-import {NavLink} from "react-router-dom";
-import TitleSummaryInput from "../../components/TitleSummaryInput";
-
+import React, { useState } from "react";
+import MarkDownEditor from "../../components/Markdown/MarkDownEditor";
+import { ChatIcon } from "@chakra-ui/icons";
+import { MastercardIcon, VisaIcon} from "../../components/Icons/Icons";
+import { Flex,Grid, Button, FormControl, FormLabel, Input, Box } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
+import Header from "../../components/Header";
+import Card from "../../components/Card/Card";
+import CardBody from "../../components/Card/CardBody";
+import CardHeader from "../../components/Card/CardHeader";
 const PostEditor = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -28,45 +30,38 @@ const PostEditor = () => {
 
     return (
         <div>
+            <Header/>
             <Grid
-                templateColumns={{md: "1fr", lg: "2.0fr 1.0fr"}}
-                templateRows={{md: "1fr auto", lg: "1fr"}}
+                templateColumns={{ md: "1fr", lg: "0.8fr 2.2fr" }}
+                templateRows={{ md: "1fr auto", lg: "1fr" }}
                 bg="white"
             >
-                {/* <FormControl id="title" mt={6} color="gray.500">
-  <FormLabel color="black">标题</FormLabel>
-  <Input color="black" type="text" value={title} onChange={handleTitleChange} />
-</FormControl>
+             <Card p='16px' >
+            <CardHeader>
+                <Flex justify='space-between' align='center' minHeight='60px' w='100%'>
+                    <Button bg="teal" color='white' fontSize='2xl' variant='no-hover'>
+                        +发起讨论
+                    </Button>
 
-<FormControl id="description" mt={4} color="gray.500">
-  <FormLabel color="black">简介</FormLabel>
-  <Input
-    type="text"
-    value={description}
-    onChange={handleDescriptionChange}
-  />
-</FormControl> */}
-                <TitleSummaryInput
-                    title={"Payment Method"}
-                    mastercard={{
-                        icon: <MastercardIcon w='100%' h='100%'/>,
-                        number: "标题",
-                    }}
-                    visa={{
-                        icon: <ChatIcon w='100%' h='100%'/>,
-                        number: "简介不超过100个字",
-                    }}
-                />
+                </Flex>
+            </CardHeader>
+            <CardBody>
+
+            </CardBody>
+        </Card>
+                
+
+            <Box w="100%">
+            <MarkDownEditor />
+            </Box>
+
             </Grid>
-
-            <MarkDownEditor/>
-
 
             <Flex
                 style={{
                     position: "fixed",
                     bottom: "20px",
-                    right: "20px",
+                    left: "20px",
                     display: "flex",
                 }}
             >

@@ -138,8 +138,8 @@ const HexagonRadarChart = () => {
                         />
                         <ChartStatistics
                             title={captions.stat4}
-                            amount={(count4 / count1) * 100}
-                            percentage={40}
+                            amount={count4}
+                            percentage={(count4 / count1) * 100}
                             icon={<StatsIcon h={"15px"} w={"15px"} color={iconBoxInside}/>}
                         />
                     </SimpleGrid>
