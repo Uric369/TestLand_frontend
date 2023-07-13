@@ -34,14 +34,6 @@ export const getTestCaseInfo = (userId,problemId,callback) => {
 //     postRequest(url, null, callback);
 // };
 
-export const getTestHistoryList = (userId,problemId,callback) => {
-    // const data={userId:userId,problemId:problemId};
-
-    const data={userId:userId,problemId:problemId};
-    console.log(data)
-    const url = `http://localhost:8080/getTestHistoryList`;
-    postRequest_v2(url,data, callback);
-};
 
 export const getCodeHistory = (userTestId,callback) => {
     // const data={userId:userId,problemId:problemId};
@@ -51,3 +43,16 @@ export const getCodeHistory = (userTestId,callback) => {
     const url = `http://localhost:8080/getCodeHistory`;
     postRequest_v2(url,data, callback);
 };
+
+
+export const getTestHistoryList = (userId,problemId,callback) => {
+    // const data={userId:userId,problemId:problemId};
+
+    const data={userId:userId,problemId:problemId};
+    console.log(data)
+    const url = `http://localhost:8080/getTestHistoryList`;
+    postRequest_v2(url,data, callback);
+};
+
+
+

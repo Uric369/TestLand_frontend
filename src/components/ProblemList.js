@@ -1,19 +1,22 @@
-// Chakra imports
-import {Flex} from "@chakra-ui/react";
-import React, {useEffect, useState} from "react";
+// ProblemList.jsx
+
+import {Button, Flex} from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
 import Problems from "./Problems";
 import Pagination from "./Tables/Pagination";
-import {getAllProblem} from "../services/ProblemService";
+import { getAllProblemByPage } from "../services/ProblemService";
 
 function ProblemList() {
     const [page, setPage] = useState(1);
     const [problemdata, setProblemData] = useState([]);
+    const pageSize = 5; // 每页数量
 
     useEffect(() => {
-        getAllProblem((data) => {
-            setProblemData([...data.data]);
+        getAllProblemByPage(page, pageSize, (data) => {
+            console.log("sss" + data);
+            setProblemData(data.data);
         });
-    }, []);
+    }, [page]);
 
     const handlePageChange = (newPage) => {
         setPage(newPage);
@@ -21,18 +24,41 @@ function ProblemList() {
         console.log(problemdata);
     };
     return (
-        <Flex direction='column' pt={{base: "100px", md: "50px"}}>
-            <Problems
-                title={"题库"}
-                captions={["序号", "题目", "标签", "难度", "通过率", "最近更新时间", "操作"]}
-                data={problemdata}
-            />
-            <Pagination
-                currentPage={page}
-                totalPages={10}
-                onPageChange={handlePageChange}
-            />
-        </Flex>
+        <div>
+                <>
+                    <Problems
+                        title={"题库"}
+                        captions={[
+                            "序号",
+                            "题目",
+                            "标签",
+                            "难度",
+                            "通过率",
+                            "最近更新时间",
+                            "操作",
+                        ]}
+                        data={problemdata}
+                    />
+                    {problemdata.length === 0 ? (
+                        <div style={{ textAlign: "center" }}>
+                            <Flex>
+                                <h2>当前页已无更多题目</h2>
+                            </Flex>
+                            <Pagination
+                                currentPage={page}
+                                totalPages={10}
+                                onPageChange={handlePageChange}
+                            />
+                        </div>
+                    ) : (
+                        <Pagination
+                            currentPage={page}
+                            totalPages={10}
+                            onPageChange={handlePageChange}
+                        />
+                    )}
+                </>
+        </div>
     );
 }
 
