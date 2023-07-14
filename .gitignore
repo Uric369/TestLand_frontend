@@ -59,3 +59,12 @@ typings/
 
 # next.js build output
 .next
+public/favicon.ico
+public/index.html
+public/logo192.png
+public/logo512.png
+public/manifest.json
+public/robots.txt
+
+
+package-lock.json

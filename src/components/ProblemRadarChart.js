@@ -53,11 +53,18 @@ const HexagonRadarChart = () => {
                 newCaptions[stat] = category;
                 newData[0].data[stat] = count;
             });
+            newData[0].data.stat2=newData[0].data.stat2/newData[0].data.stat1;
+            newData[0].data.stat3=newData[0].data.stat3/newData[0].data.stat1;
+            newData[0].data.stat4=newData[0].data.stat4/newData[0].data.stat1;
+            newData[0].data.stat5=newData[0].data.stat5/newData[0].data.stat1;
+
+
 
             setCount1(newData[0].data.stat1);
             setCount2(newData[0].data.stat2);
             setCount3(newData[0].data.stat3);
             setCount4(newData[0].data.stat4);
+            newData[0].data.stat1=1;
             setCaptions(newCaptions);
             setData(newData);
         });
@@ -121,25 +128,25 @@ const HexagonRadarChart = () => {
                         <ChartStatistics
                             title={captions.stat1}
                             amount={count1}
-                            percentage={(count1 / count1) * 100}
+                            percentage={100}
                             icon={<WalletIcon h={"15px"} w={"15px"} color={iconBoxInside}/>}
                         />
                         <ChartStatistics
                             title={captions.stat2}
-                            amount={count2}
-                            percentage={(count2 / count1) * 100}
+                            amount={count2*count1}
+                            percentage={count2*100}
                             icon={<RocketIcon h={"15px"} w={"15px"} color={iconBoxInside}/>}
                         />
                         <ChartStatistics
                             title={captions.stat3}
-                            amount={count3}
-                            percentage={(count3 / count1) * 100}
+                            amount={count3*count1}
+                            percentage={count3*100}
                             icon={<CartIcon h={"15px"} w={"15px"} color={iconBoxInside}/>}
                         />
                         <ChartStatistics
                             title={captions.stat4}
-                            amount={count4}
-                            percentage={(count4 / count1) * 100}
+                            amount={count4*count1}
+                            percentage={count4*100}
                             icon={<StatsIcon h={"15px"} w={"15px"} color={iconBoxInside}/>}
                         />
                     </SimpleGrid>

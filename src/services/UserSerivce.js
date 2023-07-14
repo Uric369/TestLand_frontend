@@ -49,6 +49,7 @@ export const login = async (data) => {
         console.log(response.data);
         if (response.status >= 0) {
             localStorage.setItem('user', JSON.stringify(response.data));
+            localStorage.setItem('userId', response.data.userId);
             if (response.data.userType === 1) {
                 window.location = "/";
             }
@@ -91,7 +92,21 @@ export const getUserList = (callback) => {
     const url = `http://localhost:8080/getUserList`;
     postRequest(url, null, callback);
 };
+export function getUserListByPage(page, pageSize, callback) {
+    const url = `http://localhost:8080/getUserListByPage?page=${page}&pageSize=${pageSize}`;
 
+    // 发送请求到后端获取题目数据
+    fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+            console.log("data"+data)
+            // 调用回调函数将数据传递给 useEffect
+            callback(data);
+        })
+        .catch((error) => {
+            console.error("Error fetching problem data:", error);
+        });
+}
 export const changeUserStatus = (username) => {
     console.log(username)
     const url = `http://localhost:8080/changeUserStatus?username=${username}`;
