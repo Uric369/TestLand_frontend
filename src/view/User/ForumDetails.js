@@ -14,6 +14,7 @@ function useQuery() {
 const ForumDetails = () => {
     const query = useQuery();
     const postId = query.get("postId");
+    console.log("hhhhhhhhhhhhhh");
     console.log(postId);
     const textColor = useColorModeValue("teal.400", "teal.200");
 
@@ -25,7 +26,7 @@ const ForumDetails = () => {
                 templateRows={{md: "1fr auto", lg: "1fr"}}
             >
                 <Flex flexDirection='column' pt={{base: "40px", md: "60px"}} pl={{base: "120px", md: "75px"}}>
-                    <ForumInfo/>
+                    <ForumInfo postId={postId}/>
                     <br/>
                     <br/>
                     <Comments/>
