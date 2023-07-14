@@ -34,9 +34,6 @@ function ProblemTableRow(props) {
     const textColor = useColorModeValue("gray.700", "white");
     const bgStatus = useColorModeValue("gray.400", "#1a202c");
     const colorStatus = useColorModeValue("white", "gray.400");
-    console.log("tags:" + tags)
-    console.log("passRate:" + passRate)
-
 
     function handleDelproblem() {
 
