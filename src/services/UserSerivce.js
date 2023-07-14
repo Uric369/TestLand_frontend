@@ -49,6 +49,7 @@ export const login = async (data) => {
         console.log(response.data);
         if (response.status >= 0) {
             localStorage.setItem('user', JSON.stringify(response.data));
+            localStorage.setItem('userId', response.data.userId);
             if (response.data.userType === 1) {
                 window.location = "/";
             }
