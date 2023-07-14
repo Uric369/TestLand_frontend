@@ -1,7 +1,6 @@
 import { Flex, Box,Image,Grid,SimpleGrid,TabList,
     Skeleton,Tabs,Tab,TabPanels,TabPanel } from "@chakra-ui/react";
 import Header from "../../components/Header";
-import ProblemList from "../../components/ProblemList";
 import { useParams } from "react-router-dom";
 import ProblemInfo from "../../components/ProblemInfo";
 import { getProblemById } from "../../services/ProblemService";

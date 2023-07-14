@@ -16,9 +16,9 @@ import {
     Tabs,
     Text,
     useColorMode,
-    useColorModeValue
+    useColorModeValue, useMultiStyleConfig, useTab
 } from '@chakra-ui/react';
-import {NavLink} from "react-router-dom";
+import {Link, NavLink, useLocation} from "react-router-dom";
 import {MoonIcon, SunIcon} from '@chakra-ui/icons';
 import {DocumentIcon,} from "./Icons/Icons";
 
@@ -27,7 +27,7 @@ const AdminHeader = () => {
     const ModeColor = useColorModeValue("blue", "teal");
     let navbarIcon = useColorModeValue("gray.700", "gray.200");
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log("user");
+    const location = useLocation();
 
 
     const handleLogout = () => {
@@ -36,18 +36,39 @@ const AdminHeader = () => {
         // 重定向用户到登录页面
         window.location = "/";
     }
+    const CustomTab = React.forwardRef((props, ref) => {
+        // 1. Reuse the `useTab` hook
+        const tabProps = useTab({...props, ref});
+        // const isSelected = !!tabProps['aria-selected'];
+        const isSelected = location.pathname === props.to;
+
+        // 2. Hook into the Tabs `size`, `variant`, props
+        const styles = useMultiStyleConfig('Tabs', tabProps);
+
+        return (
+            <Link to={props.to} __css={styles.tab} {...tabProps}>
+                {/* <Box as='span' fontSize={isSelected ?'2xl' : 'xl'} mr='2'> */}
+                <Box as='span' fontSize='2xl' mr='1'>
+                    {isSelected ? '😎' : '😐'}
+                </Box>
+                {tabProps.children}
+            </Link>
+        );
+    });
     return (
         <>
             <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
                     {/* <Box>Logo</Box> */}
-                    <Tabs variant='soft-rounded' colorScheme={ModeColor}>
-                        <TabList>
+                    <Tabs variant="soft-rounded" colorScheme="teal">
+                        <TabList fontWeight="bold" fontSize={"xl"} spacing={20}>
+                            <CustomTab to="/admin">用户管理</CustomTab>
+                            <Flex w="30px"></Flex>
+                            <CustomTab to="/admin1">题库管理</CustomTab>
 
-                            <a href="/admin"><Tab>用户管理</Tab></a>
-                            <a href="/admin1"><Tab>题库管理</Tab></a>
                         </TabList>
                     </Tabs>
+
                     <Flex alignItems={'center'}>
                         <Stack direction={'row'} spacing={7}>
                             <Button onClick={toggleColorMode}>

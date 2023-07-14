@@ -1,5 +1,33 @@
-import {Badge, Button, Flex, Progress, Tag, Td, Text, Tr, useColorModeValue} from "@chakra-ui/react";
-import React from "react";
+import {
+
+    Avatar,
+
+    Badge,
+
+    Button,
+
+    Flex,
+
+    Td,
+
+    Text,
+
+    Tr,
+
+    useColorModeValue,
+
+    Tag,
+
+    Progress, Box
+
+} from "@chakra-ui/react";
+
+import React, {useState} from "react";
+
+import {postRequest} from "../../utils/ajax";
+
+import {DelProblem} from "../../services/ProblemService";
+
 
 function ProblemTableRow(props) {
     const {problemId, problemTitle, tags, level, passRate, updateTime, date} = props;
@@ -8,6 +36,15 @@ function ProblemTableRow(props) {
     const colorStatus = useColorModeValue("white", "gray.400");
     console.log("tags:" + tags)
     console.log("passRate:" + passRate)
+
+
+    function handleDelproblem() {
+
+        DelProblem(problemId);
+
+    }
+
+
     return (
         <Tr>
 
@@ -73,13 +110,44 @@ function ProblemTableRow(props) {
 
                 <Button p="0px" bg="transparent" variant="no-hover">
                     <a href={"/problemDetails/" + problemId}>
+
+                        <Text
+
+                            fontSize="md"
+
+                            color="gray.400"
+
+                            fontWeight="bold"
+
+                            cursor="pointer"
+
+                        >
+
+                            查看
+
+                        </Text>
+
+                    </a>
+
+                </Button>
+
+
+            </Td>
+            <Td>
+
+                <Button p="0px" bg="transparent" variant="no-hover" onClick={handleDelproblem}>
+
+                    <a>
+
                         <Text
                             fontSize="md"
                             color="gray.400"
                             fontWeight="bold"
                             cursor="pointer"
                         >
-                            查看
+
+                            删除
+
                         </Text>
                     </a>
                 </Button>
