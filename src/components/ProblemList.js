@@ -36,6 +36,7 @@ function ProblemList() {
                             "通过率",
                             "最近更新时间",
                             "操作",
+                            "更新"
                         ]}
                         data={problemdata}
                     />

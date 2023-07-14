@@ -18,16 +18,15 @@ import {
 
     Tag,
 
-    Progress
+    Progress, Box
 
 } from "@chakra-ui/react";
 
-import React from "react";
+import React, {useState} from "react";
 
 import {postRequest} from "../../utils/ajax";
 
 import {DelProblem} from "../../services/ProblemService";
-
 
 
 function ProblemTableRow(props) {
@@ -39,15 +38,11 @@ function ProblemTableRow(props) {
     console.log("passRate:" + passRate)
 
 
-
-
-
     function handleDelproblem() {
 
         DelProblem(problemId);
 
     }
-
 
 
     return (
@@ -137,18 +132,12 @@ function ProblemTableRow(props) {
                 </Button>
 
 
-
-
-
-
-
             </Td>
-
             <Td>
 
                 <Button p="0px" bg="transparent" variant="no-hover" onClick={handleDelproblem}>
 
-                    <a >
+                    <a>
 
                         <Text
                             fontSize="md"
