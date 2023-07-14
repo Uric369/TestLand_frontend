@@ -3,8 +3,10 @@ import {useNavigate} from "react-router-dom";
 import {test} from "../services/TestService";
 import Editor from "@monaco-editor/react";
 import files from "../variables/Files";
-import {Button, Flex, Grid, Select, Text, useColorModeValue, useToast,} from "@chakra-ui/react";
+import {Button, Flex, Grid, Select, Text, useColorModeValue, useToast, Spinner} from "@chakra-ui/react";
 import {MoonIcon, SunIcon} from '@chakra-ui/icons';
+import { waitTestInfo } from "../services/WebSocketService";
+import { wait } from "@testing-library/user-event/dist/utils";
 
 const CodingArea = (props) => {
     const {problemId, title} = props;
@@ -24,6 +26,7 @@ const CodingArea = (props) => {
     const [code, setCode] = useState(
         storedCode ? storedCode : '//Type your code here...'
     );
+    const [isLoading, setIsLoading] = useState(true);
     const toast = useToast();
     // const userId=localStorage.getItem('userId');
 
@@ -72,8 +75,12 @@ const CodingArea = (props) => {
                 userId: user.userId, problemId: problemId, code: code, language: language
             }
             console.log(testInfo);
+            waitTestInfo(localStorage.getItem('userId'), title, problemId);
             test(testInfo, (data) => {
-                if (data.status > 0) navigate(`/submitCode?problemId=${problemId}&title=${encodeURIComponent(title)}&userId=${user.userId}`);
+                if(data.status > 0) {
+                    setIsLoading(false);
+                    // waitTestInfo(localStorage.getItem('userId'));
+                }
                 else {
                     toast({
                         title: data.message,
@@ -99,6 +106,23 @@ const CodingArea = (props) => {
         }
         localStorage.setItem(`userCode_${problemId}`, code);
     };
+
+    if(!isLoading) {
+        return(
+            <Flex justify="center" alignItems="center" h="300px">
+                    <Spinner
+                        thickness='4px'
+                        speed='0.65s'
+                        emptyColor='gray.200'
+                        color='blue.500'
+                        size='xl'
+                    />
+                    <Text m="40px" fontSize="2xl" color={textColor} fontWeight={"bold"}>
+                        正在测评...
+                    </Text>
+                </Flex>
+        );
+    }
 
 
     return (
