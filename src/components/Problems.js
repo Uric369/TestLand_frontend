@@ -9,13 +9,13 @@ import {BsArrowRight} from "react-icons/bs";
 import React from "react";
 import {NavLink} from "react-router-dom";
 
-const Problems = ({title, captions, data}) => {
+const Problems = ({captions, data}) => {
     const textColor = useColorModeValue("gray.700", "white");
     let mainText = useColorModeValue("gray.700", "gray.200");
 
     return (
         <Card overflowX={{sm: "scroll", xl: "hidden"}}>
-            <CardHeader p='6px 0px 22px 0px'>
+            {/* <CardHeader p='6px 0px 22px 0px'>
                 <Grid
                     templateColumns={{md: "1fr", lg: "4fr 1fr"}}
                     templateRows={{md: "1fr auto", lg: "1fr"}}
@@ -64,7 +64,7 @@ const Problems = ({title, captions, data}) => {
                         </Flex>
                     </Grid>
                 </Grid>
-            </CardHeader>
+            </CardHeader> */}
             <CardBody>
                 <Table variant='simple' color={textColor}>
                     <Thead>

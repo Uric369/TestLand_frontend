@@ -16,7 +16,30 @@ export function getAllProblemByPage(page, pageSize, callback) {
         });
 }
 
+export function getAllCategoryName(callback) {
+    const url = 'http://localhost:8080/getAllCategoryName';
+    postRequest(url, null, callback);
+  }
 
+//   export function getAllTag(callback) {
+//     const url = 'http://localhost:8080/getAllTag';
+//     postRequest(url, null, callback);
+//   }
+
+export function getProblemByCategoryAndPage(category, page, pageSize, callback) {
+    const url = `http://localhost:8080/getProblemByCategoryAndPage?category=${category}&page=${page}&pageSize=${pageSize}`;
+    postRequest(url, null, callback);
+}
+
+export function getProblemByTagAndPage(tag, page, pageSize, callback) {
+    const url = `http://localhost:8080/getProblemByTagAndPage?tag=${tag}&page=${page}&pageSize=${pageSize}`;
+    postRequest(url, null, callback);
+}
+
+export function filtrateProblemByPage(keyword, page, pageSize, callback) {
+    const url = `http://localhost:8080/filtrateProblemByPage?keyword=${keyword}&page=${page}&pageSize=${pageSize}`;
+    postRequest(url, null, callback);
+}
 
 export const getAllProblem = (callback) => {
     const url = `http://localhost:8080/getAllProblem`;
