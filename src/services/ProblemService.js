@@ -21,10 +21,23 @@ export function getAllCategoryName(callback) {
     postRequest(url, null, callback);
   }
 
-//   export function getAllTag(callback) {
-//     const url = 'http://localhost:8080/getAllTag';
-//     postRequest(url, null, callback);
-//   }
+  export function getAllTag(callback) {
+    const url = 'http://localhost:8080/getAllTag';
+    postRequest(url, null, callback);
+  }
+
+export function selectProblemByPageAndOthers(category, tag, difficulty, keyword, page, pageSize, callback) {
+    const data = {
+        category: category,
+        tag: tag,
+        difficulty: difficulty,
+        keyword: keyword,
+        page: page - 1,
+        size: pageSize
+    };
+    const url = `http://localhost:8080/selectProblemByPageAndOthers`;
+    postRequest(url, data, callback);
+}
 
 export function getProblemByCategoryAndPage(category, page, pageSize, callback) {
     const url = `http://localhost:8080/getProblemByCategoryAndPage?category=${category}&page=${page}&pageSize=${pageSize}`;
