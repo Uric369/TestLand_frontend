@@ -1,5 +1,5 @@
 // Chakra imports
-import {Flex, Grid, Icon, Input, Table, Tbody, Text, Th, Thead, Tr, useColorModeValue,} from "@chakra-ui/react";
+import {Flex, Grid, Icon, Input, Table, Tbody, Text, Th, Thead, Tr, useColorModeValue, Box, Heading} from "@chakra-ui/react";
 // Custom components
 import Card from "./Card/Card.js";
 import CardBody from "./Card/CardBody.js";
@@ -13,6 +13,7 @@ const Problems = ({captions, data}) => {
     const textColor = useColorModeValue("gray.700", "white");
     let mainText = useColorModeValue("gray.700", "gray.200");
 
+    if(data && data.length != 0) {
     return (
         <Card overflowX={{sm: "scroll", xl: "hidden"}}>
             {/* <CardHeader p='6px 0px 22px 0px'>
@@ -79,23 +80,38 @@ const Problems = ({captions, data}) => {
                         </Tr>
                     </Thead>
                     <Tbody>
-                        {data.map((row) => {
-                            return (
-                                <ProblemTableRow
-                                    problemId={row.problemId}
-                                    problemTitle={row.problemTitle}
-                                    tags={row.tags}
-                                    passRate={row.passRate * 100}
-                                    updateTime={row.updateTime}
-                                    level={row.level}
-                                />
-                            );
-                        })}
+                        {
+                            data.map((row) => {
+                                return (
+                                    <ProblemTableRow
+                                        problemId={row.problemId}
+                                        problemTitle={row.problemTitle}
+                                        tags={row.tags}
+                                        passRate={row.passRate * 100}
+                                        updateTime={row.updateTime}
+                                        level={row.difficulty}
+                                    />
+                                );
+                            })
+                        }
+                    
                     </Tbody>
                 </Table>
             </CardBody>
         </Card>
     );
+                        }
+    else {
+        return (
+            <Box textAlign="center" py={4}>
+            <Flex align="center">
+                <Heading as="h2" size="lg" color="gray.700" whiteSpace="nowrap">
+                当前页已无更多题目
+                </Heading>
+            </Flex>
+            </Box>
+        );
+    }
 };
 
 export default Problems;
