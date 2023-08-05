@@ -121,6 +121,7 @@ function ProblemList() {
             "更新"
           ]}
           data={problemdata}
+          keyword={keyword}
         />
 
           <Pagination
