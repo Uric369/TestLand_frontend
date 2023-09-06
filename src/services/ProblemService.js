@@ -22,7 +22,10 @@ export const getAllProblem = (callback) => {
     const url = `http://localhost:8080/getAllProblem`;
     postRequest(url, null, callback);
 };
-
+export const getCategoryContentById = (categoryId,callback) => {
+    const url = `http://localhost:8080/getCategoryContentById?categoryId=`+categoryId;
+    postRequest(url, null, callback);
+};
 export const getProblemById = (problemId, callback) => {
     const data = {problemId: problemId};
     const url = `http://localhost:8080/getProblemById`;

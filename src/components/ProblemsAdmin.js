@@ -6,15 +6,15 @@ import CardBody from "./Card/CardBody.js";
 import CardHeader from "./Card/CardHeader.js";
 import ProblemTableRow from "./Tables/ProblemTableRow.js";
 import {BsArrowRight} from "react-icons/bs";
-import React from "react";
+import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
 import ProblemTableRowAdmin from "./Tables/ProblemTableRowAdmin";
 
-const Problems = ({title, captions, data}) => {
+const ProblemsAdmin = ({title, captions, data, handleUpdate}) => {
     const textColor = useColorModeValue("gray.700", "white");
     let mainText = useColorModeValue("gray.700", "gray.200");
-
     return (
+
         <Card overflowX={{sm: "scroll", xl: "hidden"}}>
             <CardHeader p='6px 0px 22px 0px'>
                 <Grid
@@ -82,13 +82,18 @@ const Problems = ({title, captions, data}) => {
                     <Tbody>
                         {data.map((row) => {
                             return (
-                                <ProblemTableRow
+                                <ProblemTableRowAdmin
                                     problemId={row.problemId}
                                     problemTitle={row.problemTitle}
                                     tags={row.tags}
+                                    difficulty={row.difficulty}
+                                    description={row.description}
+                                    hint={row.hint}
+                                    category={row.category}
                                     passRate={row.passRate * 100}
                                     updateTime={row.updateTime}
                                     level={row.level}
+                                    handleUpdate={handleUpdate}
                                 />
                             );
                         })}
@@ -99,5 +104,4 @@ const Problems = ({title, captions, data}) => {
     );
 };
 
-export default Problems;
-  
+export default ProblemsAdmin;
