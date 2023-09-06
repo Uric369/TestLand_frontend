@@ -139,7 +139,8 @@ import CardHeader from "./Card/CardHeader.js";
 import ProblemTableRow from "./Tables/ProblemTableRow.js";
 import { BsArrowRight } from "react-icons/bs";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import {NavLink} from "react-router-dom";
+import ProblemTableRowAdmin from "./Tables/ProblemTableRowAdmin";
 
 const Problems = ({ captions, data, keyword }) => {
   const textColor = useColorModeValue("gray.700", "white");
