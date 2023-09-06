@@ -5,8 +5,9 @@ import {Flex} from "@chakra-ui/react";
 import {postGuide} from "../variables/MarkDownText";
 
 
-const MarkDownEditor = () => {
+const MarkDownEditor = (props) => {
     const [vditor, setVditor] = useState(null);
+    const {updateContent} = props;
 
     useEffect(() => {
         const vditor = new Vditor("vditor", {

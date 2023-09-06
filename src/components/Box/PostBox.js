@@ -1,14 +1,18 @@
 import React from "react";
-import {Avatar, Box, Flex, Icon, Image, Spacer, Text, useColorModeValue} from "@chakra-ui/react";
+import {Avatar, Box, Flex, Icon, Image, Spacer, Text, useColorModeValue, useStatStyles} from "@chakra-ui/react";
 import Card from "../Card/Card";
 import CardBody from "../Card/CardBody";
 import {BsBookmark, BsChat, BsEye, BsHeart} from "react-icons/bs";
 import {NavLink} from "react-router-dom";
+import { useState } from "react";
 
 const results = ["AC", "WA", "TLE", "MLE", "RE"];
 
 function PostBox(props) {
     const {post} = props;
+    console.log("jeoi");
+    console.log(post.coverUrl);
+
     const textColor = useColorModeValue("gray.700", "white");
     const bgModeColor = useColorModeValue("gray.100", "black");
 
@@ -27,9 +31,9 @@ function PostBox(props) {
                 <Card p='1.2rem'>
                     <CardBody w='100%'>
                         <Flex flexDirection={{sm: "column", lg: "row"}} w='100%'>
-                            {post.postPhoto ? (
+                            {post.coverUrl ? (
                                 <Image
-                                    src={post.postPhoto}
+                                    src={post.coverUrl}
                                     maxWidth="300px"
                                     width="100%"
                                     height="100%"
@@ -47,11 +51,11 @@ function PostBox(props) {
                                         src={post.avatar ? post.avatar : 'https://avatars.dicebear.com/api/male/username.svg'}
                                     />
                                     <Text fontSize='xl' color={textColor} fontWeight='bold' pb='.5rem'>
-                                        {post.postTitle}
+                                        {post.title}
                                     </Text>
                                 </Flex>
                                 <Text fontSize='sm' color={textColor} pb='.5rem' mb="15px">
-                                    {post.postSummary}
+                                    {post.summary}
                                 </Text>
 
                                 <Spacer/>
