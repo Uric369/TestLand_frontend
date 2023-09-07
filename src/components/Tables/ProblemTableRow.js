@@ -36,8 +36,6 @@ function ProblemTableRow(props) {
     const colorStatus = useColorModeValue("white", "gray.400");
 
 
-
-
     return (
         <Tr>
 
