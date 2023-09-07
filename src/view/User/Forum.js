@@ -10,6 +10,7 @@ import {ChatIcon} from "@chakra-ui/icons";
 const Forum = () => {
     const [isOpen, setIsOpen] = useState(false);
     const textColor = useColorModeValue("teal.400", "teal.200");
+    const user=JSON.parse(localStorage.getItem("user"));
 
     const handleOpen = () => {
         setIsOpen(true);
@@ -43,7 +44,11 @@ const Forum = () => {
                     </Tabs>
                 </Flex>
                 <Flex flexDirection="column" pt={{base: "40px", md: "60px"}} px={{base: "120px", md: "75px"}}>
-                    <NavLink to="/postEditor"><Button w="100%"> +发起讨论</Button></NavLink>
+                <NavLink to={user ? '/postEditor' : '#'}>
+      <Button w="100%">
+        {user ? '+发起讨论' : '登录才可以发起讨论哦'}
+      </Button>
+    </NavLink>
                     <Flex mt="20px"></Flex>
                     <Text fontSize="2xl" color={textColor} fontWeight={"bold"}>
                         <ChatIcon color={textColor} w={6} h={6} mr={2}/>

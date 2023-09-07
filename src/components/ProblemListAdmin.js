@@ -63,7 +63,6 @@ function ProblemListAdmin(props) {
                         "最近更新时间",
                         "操作",
                         "删除",
-                        "更新"
                     ]}
                     data={problemdata}
                     handleUpdate={updateProblem}

@@ -167,21 +167,7 @@ function ProblemTableRowAdmin(props) {
 
             </Td>
 
-            <Td>
-                <Button p="0px" bg="transparent" variant="no-hover" onClick={handleClick}>
-                    <a>
-                        <Text
-                            fontSize="md"
-                            color="gray.400"
-                            fontWeight="bold"
-                            cursor="pointer"
-                        >
-                            更新
-                        </Text>
-                    </a>
-                </Button>
 
-            </Td>
         </Tr>
     );
 }

@@ -21,6 +21,7 @@ import {
 import ProblemList from "./ProblemList";
 import ProblemAddingForm from "./Tables/ProblemAddingForm";
 import { getCategoryContentById } from "../services/ProblemService";
+import ProblemListAdmin from "./ProblemListAdmin";
 
 const AdminProblem = () => {
     const [showForm, setShowForm] = useState(false);
@@ -154,7 +155,7 @@ const AdminProblem = () => {
             <div>
                 {!showForm && (
                     <div>
-                        <ProblemList />
+                        <ProblemListAdmin />
                         <Button onClick={handleAddProblem}>新增题目</Button>
                     </div>
                 )}

@@ -4,7 +4,6 @@ import {Flex, Grid, Icon, Input, Table, Tbody, Text, Th, Thead, Tr, useColorMode
 import Card from "./Card/Card.js";
 import CardBody from "./Card/CardBody.js";
 import CardHeader from "./Card/CardHeader.js";
-import ProblemTableRow from "./Tables/ProblemTableRow.js";
 import {BsArrowRight} from "react-icons/bs";
 import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
@@ -14,7 +13,6 @@ const ProblemsAdmin = ({title, captions, data, handleUpdate}) => {
     const textColor = useColorModeValue("gray.700", "white");
     let mainText = useColorModeValue("gray.700", "gray.200");
     return (
-
         <Card overflowX={{sm: "scroll", xl: "hidden"}}>
             <CardHeader p='6px 0px 22px 0px'>
                 <Grid

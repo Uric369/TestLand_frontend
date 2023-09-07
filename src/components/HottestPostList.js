@@ -1,19 +1,23 @@
 import {Flex} from "@chakra-ui/react";
 import React, {useState} from "react";
 import Pagination from "./Tables/Pagination";
-import {postList} from "../variables/Post";
+import { useEffect } from "react";
+// import {postList} from "../variables/Post";
 import PostBox from "./Box/PostBox";
+import { getPosts } from "../services/PostService";
 
 function HottestPostList() {
     const [page, setPage] = useState(1);
-    // const [postList, setPostList] = useState([]);
+    const [postList, setPostList] = useState([]);
     console.log(postList);
 
-    // useEffect(() => {
-    //   getAllPost((data) => {
-    //       setPostList([...data.data]);
-    //   });
-    // }, []);
+    useEffect(() => {
+      getPosts((data) => {
+          setPostList([...data.data]);
+          console.log("here");
+          console.log(data);
+      });
+    }, []);
 
     const handlePageChange = (newPage) => {
         setPage(newPage);

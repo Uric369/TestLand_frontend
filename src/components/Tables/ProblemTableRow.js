@@ -34,15 +34,8 @@ function ProblemTableRow(props) {
     const textColor = useColorModeValue("gray.700", "white");
     const bgStatus = useColorModeValue("gray.400", "#1a202c");
     const colorStatus = useColorModeValue("white", "gray.400");
-    console.log("tags:" + tags)
-    console.log("passRate:" + passRate)
 
 
-    function handleDelproblem() {
-
-        DelProblem(problemId);
-
-    }
 
 
     return (
@@ -74,13 +67,13 @@ function ProblemTableRow(props) {
 
             <Td>
                 <Badge
-                    bg={level === 0 ? "green.400" : level === 1 ? "yellow.400" : "red.400"}
+                    bg={level === "0" ? "green.400" : level === "1" ? "yellow.400" : "red.400"}
                     color="white"
                     fontSize="16px"
                     p="3px 10px"
                     borderRadius="8px"
                 >
-                    {level === 0 ? "简单" : level === 1 ? "中等" : "困难"}
+                    {level === "0" ? "简单" : level === "1" ? "中等" : "困难"}
                 </Badge>
             </Td>
 
@@ -133,25 +126,7 @@ function ProblemTableRow(props) {
 
 
             </Td>
-            <Td>
 
-                <Button p="0px" bg="transparent" variant="no-hover" onClick={handleDelproblem}>
-
-                    <a>
-
-                        <Text
-                            fontSize="md"
-                            color="gray.400"
-                            fontWeight="bold"
-                            cursor="pointer"
-                        >
-
-                            删除
-
-                        </Text>
-                    </a>
-                </Button>
-            </Td>
         </Tr>
     );
 }
