@@ -155,8 +155,16 @@ const AdminProblem = () => {
             <div>
                 {!showForm && (
                     <div>
-                        <ProblemListAdmin />
-                        <Button onClick={handleAddProblem}>新增题目</Button>
+                        <div>
+                            <ProblemListAdmin />
+                            <Button colorScheme="blue" onClick={handleAddProblem}>新增题目</Button>
+                        </div>
+                        <br />
+                        <div>
+                            <Button colorScheme="blue" onClick={handleEditProblem}>
+                                更新题目信息
+                            </Button>
+                        </div>
                     </div>
                 )}
                 {showForm && <ProblemAddingForm setShowForm={setShowForm} />}
@@ -261,12 +269,12 @@ const AdminProblem = () => {
                 </Modal>
             )}
 
-            {/* 在需要显示更新按钮的地方 */}
+            {/* 在需要显示更新按钮的地方
             <div>
                 <Button colorScheme="blue" onClick={handleEditProblem}>
                     更新题目信息
                 </Button>
-            </div>
+            </div> */}
         </Flex>
     );
 };
