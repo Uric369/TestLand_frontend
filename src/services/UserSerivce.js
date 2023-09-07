@@ -119,3 +119,8 @@ export const getRankingList = (callback) => {
     const url = `http://localhost:8080/getRankingList`;
     postRequest(url, null, callback);
 };
+
+export function searchUsersByUsername(page, pageSize, keyword, callback) {
+    const url = `http://localhost:8080/getUsersByKeyword?keyword=${keyword}&page=${page}&pageSize=${pageSize}`;
+    postRequest(url, null, callback);
+}

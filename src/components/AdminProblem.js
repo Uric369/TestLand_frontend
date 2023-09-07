@@ -151,7 +151,7 @@ const AdminProblem = () => {
     };
 
     return (
-        <Flex style={{ marginLeft: '100px' }} direction='column' pt={{ base: "100px", md: "50px" }}>
+        <Flex  direction='column' pt={{ base: "100px", md: "50px" }}>
             <div>
                 {!showForm && (
                     <div>
@@ -269,12 +269,6 @@ const AdminProblem = () => {
                 </Modal>
             )}
 
-            {/* 在需要显示更新按钮的地方
-            <div>
-                <Button colorScheme="blue" onClick={handleEditProblem}>
-                    更新题目信息
-                </Button>
-            </div> */}
         </Flex>
     );
 };
