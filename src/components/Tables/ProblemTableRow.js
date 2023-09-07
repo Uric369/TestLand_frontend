@@ -35,12 +35,6 @@ function ProblemTableRow(props) {
     const bgStatus = useColorModeValue("gray.400", "#1a202c");
     const colorStatus = useColorModeValue("white", "gray.400");
 
-    function handleDelproblem() {
-
-        DelProblem(problemId);
-
-    }
-
 
     return (
         <Tr>
@@ -130,25 +124,7 @@ function ProblemTableRow(props) {
 
 
             </Td>
-            <Td>
 
-                <Button p="0px" bg="transparent" variant="no-hover" onClick={handleDelproblem}>
-
-                    <a>
-
-                        <Text
-                            fontSize="md"
-                            color="gray.400"
-                            fontWeight="bold"
-                            cursor="pointer"
-                        >
-
-                            删除
-
-                        </Text>
-                    </a>
-                </Button>
-            </Td>
         </Tr>
     );
 }
