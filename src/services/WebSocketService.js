@@ -20,6 +20,14 @@ export const waitTestInfo = (userId, title, problemId) => {
     socket.onmessage = (event) => {
     const receivedMessage = JSON.parse(event.data);
     console.log('接收到消息：', receivedMessage);
+    if(receivedMessage.status === -2){
+        localStorage.removeItem("user");
+        // 弹窗警告
+        alert("提交危险代码，该账户已被封禁，请联系管理员！");
+        console.log("提交危险代码");
+        // 重定向用户到登录页面
+        window.location = "/";
+    }
     if (receivedMessage.status > 0 ||  window.location.pathname === '/problemDetails/' + problemId) {
         // 构造目标URL
         const targetURL = `/submitCode?problemId=${problemId}&title=${encodeURIComponent(title)}&userId=${userId}`;
