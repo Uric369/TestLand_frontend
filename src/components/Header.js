@@ -116,7 +116,7 @@ const Header = () => {
                                         minW={0}>
                                         <Avatar
                                             size={'sm'}
-                                            src={'https://avatars.dicebear.com/api/male/username.svg'}
+                                            src={user.avatar}
                                         />
                                     </MenuButton>
                                     <MenuList alignItems={'center'}>
@@ -124,7 +124,7 @@ const Header = () => {
                                         <Center>
                                             <Avatar
                                                 size={'2xl'}
-                                                src={'https://avatars.dicebear.com/api/male/username.svg'}
+                                                src={user.avatar}
                                             />
                                         </Center>
                                         <br/>

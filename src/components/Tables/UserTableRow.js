@@ -1,6 +1,7 @@
-import {Button, Flex, Td, Text, Tr, useColorModeValue} from "@chakra-ui/react";
+import {Button, Flex, Td, Text, Tr, useColorModeValue, Avatar} from "@chakra-ui/react";
 import React from "react";
 import {changeUserStatus} from "../../services/UserSerivce";
+// import { Avatar } from "antd";
 
 function UserTableRow(props) {
     const {userId, username, avatar, email, phone, address, status} = props;
@@ -30,9 +31,10 @@ function UserTableRow(props) {
 
             <Td minWidth={{sm: "100x"}} pl="0px">
                 <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
-                    <Text fontSize="md" color={textColor} fontWeight="bold">
+                    {/* <Text fontSize="md" color={textColor} fontWeight="bold">
                         {avatar}
-                    </Text>
+                    </Text> */}
+                    <Avatar src={avatar} size="sm" />
                 </Flex>
             </Td>
 

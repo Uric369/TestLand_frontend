@@ -24,8 +24,20 @@ function ProblemTableRowAdmin(props) {
     const textColor = useColorModeValue("gray.700", "white");
     const bgStatus = useColorModeValue("gray.400", "#1a202c");
     const colorStatus = useColorModeValue("white", "gray.400");
-    console.log("tags:" + tags)
-    console.log("passRate:" + passRate);
+    const [isOpen, setIsOpen] = useState(false);
+    const [problemDetails, setProblemDetails] = useState(null);
+
+    useEffect(() => {
+        if (isOpen) {
+          getProblemById(problemId, (data) => {
+            setProblemDetails(data.data); 
+          });
+        }
+      }, [isOpen, problemId]);
+    
+      const onClose = () => {
+        setIsOpen(false);
+      };
 
     const handleClick = () => {
         console.log("clicked: ---------" + problemId + problemTitle + difficulty + description + hint + category + tags + level + passRate + updateTime + date);
@@ -110,13 +122,13 @@ function ProblemTableRowAdmin(props) {
 
             <Td>
                 <Badge
-                    bg={level === 0 ? "green.400" : level === 1 ? "yellow.400" : "red.400"}
+                    bg={level === "0" ? "green.400" : level === "1" ? "yellow.400" : "red.400"}
                     color="white"
                     fontSize="16px"
                     p="3px 10px"
                     borderRadius="8px"
                 >
-                    {level === 0 ? "简单" : level === 1 ? "中等" : "困难"}
+                    {level === "0" ? "简单" : level === "1" ? "中等" : "困难"}
                 </Badge>
             </Td>
 
@@ -143,30 +155,84 @@ function ProblemTableRowAdmin(props) {
                 </Text>
             </Td>
             <Td>
-
-                <Button p="0px" bg="transparent" variant="no-hover">
-                    <a href={"/problemDetails/" + problemId}>
-
+                <Button
+                        p="0px"
+                        bg="transparent"
+                        variant="no-hover"
+                        onClick={() => setIsOpen(true)}
+                    >
                         <Text
-
-                            fontSize="md"
-
-                            color="gray.400"
-
-                            fontWeight="bold"
-
-                            cursor="pointer"
-
+                        fontSize="md"
+                        color="gray.400"
+                        fontWeight="bold"
+                        cursor="pointer"
                         >
-
-                            查看
-
+                        查看
                         </Text>
-
-                    </a>
-
                 </Button>
-
+                <Drawer isOpen={isOpen} onClose={onClose} size="lg">
+                    <DrawerOverlay />
+                    <DrawerContent>
+                    <DrawerCloseButton />
+                    <DrawerHeader>
+                            <Heading as="h2" size="lg" mb="1rem">
+                                问题详情
+                            </Heading>
+                    </DrawerHeader>
+                    <DrawerBody>
+                        {problemDetails ? (
+                        <div>                           
+                            <Box mb="1rem">
+                                <Text fontWeight="bold">问题标题:</Text>
+                                <Text>{problemDetails.problemTitle}</Text>
+                            </Box>
+                            <Box mb="1rem">
+                                <Text fontWeight="bold">难度:</Text>
+                                <Text>{problemDetails.difficulty}</Text>
+                            </Box>
+                            <Box mb="1rem">
+                                <Text fontWeight="bold">描述:</Text>
+                                <Text>{problemDetails.description}</Text>
+                            </Box>
+                            <Box mb="1rem">
+                                <Text fontWeight="bold">提示:</Text>
+                                <Text>{problemDetails.hint}</Text>
+                            </Box>
+                            <Box mb="1rem">
+                                <Text fontWeight="bold">更新时间:</Text>
+                                <Text>{problemDetails.updateTime}</Text>
+                            </Box>
+                            <Box mb="1rem">
+                                <Text fontWeight="bold">分类:</Text>
+                                <Text>{problemDetails.category}</Text>
+                            </Box>
+                            <Box mb="1rem">
+                                <Text fontWeight="bold">标签:</Text>
+                                <Flex>
+                                {problemDetails.tags.map((tag) => (
+                                    <Badge key={tag.tagId} colorScheme="green" m="2px">
+                                    {tag.content}
+                                    </Badge>
+                                ))}
+                                </Flex>
+                            </Box>
+                            <Box mb="1rem">
+                                <Text fontWeight="bold">作答情况:</Text>
+                                <TestResultsChart
+                                    acCount={problemDetails.acCount}
+                                    waCount={problemDetails.waCount}
+                                    tleCount={problemDetails.tleCount}
+                                    reCount={problemDetails.reCount}
+                                    mleCount={problemDetails.mleCount}
+                                />
+                            </Box>
+                        </div>
+                            ) : (
+                            <p>加载中...</p>
+                            )}
+                        </DrawerBody>
+                    </DrawerContent>
+                </Drawer>
 
             </Td>
             <Td>
