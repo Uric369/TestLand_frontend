@@ -1,35 +1,10 @@
-import {
+import {Avatar, Badge, Button, Flex, Td, Text, Tr, useColorModeValue, Tag, Progress, Box} from "@chakra-ui/react";
 
-    Avatar,
-
-    Badge,
-
-    Button,
-
-    Flex,
-
-    Td,
-
-    Text,
-
-    Tr,
-
-    useColorModeValue,
-
-    Tag,
-
-    Progress, Box, Drawer, DrawerOverlay, DrawerContent, DrawerCloseButton, DrawerHeader, DrawerBody, Heading
-
-} from "@chakra-ui/react";
-
-import React, {useState, useEffect} from "react";
-
+import React, {useState} from "react";
 import {postRequest} from "../../utils/ajax";
-
-import {DelProblem, getProblemById} from "../../services/ProblemService";
-import TestResultsChart from "../TestResultsChart";
-
-
+import {DelProblem} from "../../services/ProblemService";
+import {Dropdown} from "antd";
+import axios from "axios";
 
 function ProblemTableRowAdmin(props) {
     const {
@@ -73,6 +48,48 @@ function ProblemTableRowAdmin(props) {
 
         DelProblem(problemId);
 
+    }
+
+    function handleUpdateTestCases() {
+        // Create a file input element
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = ".zip";
+        // Add an event listener to capture the selected file
+        fileInput.addEventListener("change", async (event) => {
+            const selectedFile = event.target.files[0];
+
+            // Check if a file was selected
+            if (!selectedFile) {
+                return;
+            }
+
+            // Create a FormData object to send the file to the backend
+            const formData = new FormData();
+            formData.append("problemId", problemId);
+            formData.append("testcases", selectedFile);
+
+            try {
+                // Send a POST request to the backend API
+                const response = await axios.post("http://localhost:8080/updateTestcases", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    }
+                });
+
+                // Handle the response from the server here
+                console.log("Test cases updated:", response.data);
+                if (response.data.status === 1) {
+                    alert(response.data.message);
+                }
+            } catch (error) {
+                // Handle any errors that occur during the request
+                console.error("Error updating test cases:", error);
+            }
+        });
+
+        // Trigger a click event on the file input to open the file dialog
+        fileInput.click();
     }
 
 
@@ -233,7 +250,25 @@ function ProblemTableRowAdmin(props) {
                 </Button>
 
             </Td>
-
+            <Td>
+                <Button
+                    p="0px"
+                    bg="transparent"
+                    variant="no-hover"
+                    onClick={handleUpdateTestCases}
+                >
+                    <a>
+                        <Text
+                            fontSize="md"
+                            color="gray.400"
+                            fontWeight="bold"
+                            cursor="pointer"
+                        >
+                            更新测试样例
+                        </Text>
+                    </a>
+                </Button>
+            </Td>
 
         </Tr>
     );

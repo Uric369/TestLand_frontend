@@ -1,4 +1,5 @@
 import {postRequest, postRequest_v2} from "../utils/ajax";
+import axios from "axios";
 
 export function getAllProblemByPage(page, pageSize, callback) {
     const url = `http://localhost:8080/getAllProblemByPage?page=${page}&pageSize=${pageSize}`;
@@ -58,6 +59,7 @@ export const getAllProblem = (callback) => {
     const url = `http://localhost:8080/getAllProblem`;
     postRequest(url, null, callback);
 };
+
 export const getCategoryContentById = (categoryId,callback) => {
     const url = `http://localhost:8080/getCategoryContentById?categoryId=`+categoryId;
     postRequest(url, null, callback);
