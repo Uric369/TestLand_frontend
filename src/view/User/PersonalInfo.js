@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {
     Box,
     Divider,
@@ -23,63 +23,24 @@ import {
 } from "@chakra-ui/react";
 import Header from "../../components/Header";
 import {HomeOutlined, MailOutlined, PhoneOutlined, UserOutlined} from "@ant-design/icons";
+import {getTriedProblemList} from "../../services/UserSerivce";
 
 const PersonalInfo = () => {
     const [selectedTab, setSelectedTab] = useState(0); // 默认选中第一个菜单项
+    const [userproblems, setUserproblems] = useState([])
 
-    // 示例数据，替换成您的实际用户数据
-    const user = {
-        userStatus: 0,
-        address: "上海交通大学软件学院",
-        phone: "15111111111",
-        userType: 0,
-        avatar: "http://myimg.lightece.top/bookstore/assets/avatar/ceylon.jpeg",
-        userId: "1",
-        email: "user1@example.com",
-        username: "user1",
-    };
+    const user = JSON.parse(localStorage.getItem("user"));
+    useEffect(() => {
+        getTriedProblemList(user.userId, (data) => {
+            setUserproblems([...data.data]);
+        });
+    }, []);
 
-    const userproblems = [
-        {
-            "difficulty": 2,
-            "testCount": 1,
-            "problemStatus": 1,
-            "problemTitle": "title1",
-            "problemId": 1,
-            "tags": [
-                {
-                    "tagId": 1,
-                    "content": "tag1"
-                },
-                {
-                    "tagId": 2,
-                    "content": "tag2"
-                }
-            ]
-        },
-        {
-            "difficulty": 2,
-            "testCount": 1,
-            "problemStatus": 0,
-            "problemTitle": "title2",
-            "problemId": 2,
-            "tags": [
-                {
-                    "tagId": 3,
-                    "content": "tag3"
-                },
-                {
-                    "tagId": 2,
-                    "content": "tag2"
-                }
-            ]
-        }
-    ]
     const renderProblemStatus = (status) => {
         if (status === 0) return <Text fontWeight="bold" color="green" fontSize="xl">AC</Text>
         if (status === 1) return <Text fontWeight="bold" color="red" fontSize="xl">WA</Text>
-        if (status === 2) return <Text fontWeight="bold" color="cyan" fontSize="xl">MLE</Text>
-        if (status === 3) return <Text fontWeight="bold" color="yellow" fontSize="xl">TLE</Text>
+        if (status === 3) return <Text fontWeight="bold" color="cyan" fontSize="xl">MLE</Text>
+        if (status === 2) return <Text fontWeight="bold" color="yellow" fontSize="xl">TLE</Text>
         if (status === 4) return <Text fontWeight="bold" color="grey" fontSize="xl">RE</Text>
     }
     const renderUserProblems = () => {
@@ -150,10 +111,10 @@ const PersonalInfo = () => {
                                     <Text fontWeight="bold">个人信息</Text>
                                     <Divider my={2}/>
                                     <List spacing={3}>
-                                        <ListItem>
+                                        {/* <ListItem>
                                             <ListIcon as={UserOutlined}/>
                                             账号: {user.userId}
-                                        </ListItem>
+                                        </ListItem> */}
                                         <ListItem>
                                             <ListIcon as={PhoneOutlined}/>
                                             手机号: {user.phone}

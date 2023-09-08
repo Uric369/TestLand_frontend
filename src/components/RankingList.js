@@ -9,23 +9,6 @@ function RankingList() {
     const bgColor = useColorModeValue("white", "gray.700");
     const bgIcons = useColorModeValue("teal.200", "rgba(255, 255, 255, 0.5)");
 
-    // const userList = [
-    //     {
-    //         username: "user1",
-    //         email: "user1email@1.com",
-    //         avatar: "https://bit.ly/dan-abramov",
-    //         passRate: "0.79",
-    //         problemCount: "13"
-    //     },
-    //     {
-    //         username: "user2",
-    //         email: "user1email1@2.com",
-    //         avatar: "https://bit.ly/dan-abramov",
-    //         passRate: "0.33",
-    //         problemCount: "13"
-    //     }
-    // ];
-
     const [userList, setUserList] = useState([]);
 
     useEffect(() => {
@@ -36,7 +19,7 @@ function RankingList() {
     console.log(userList)
 
 
-    const head = ["排行", "用户", "邮箱", "答题数", "通过率"];
+    const head = ["排行", "用户", "邮箱", "答题通过数", "通过率"];
 
     return (
         <Flex
@@ -81,7 +64,7 @@ function RankingList() {
                     mb='26px'
                     w={{base: "90%", sm: "60%", lg: "40%", xl: "30%"}}
                 >
-                    根据答题正确率和答题数量进行排名
+                    根据答题通过数及通过率进行排名
                 </Text>
             </Flex>
             <Flex
@@ -157,11 +140,10 @@ function RankingList() {
                                         </Flex>
                                     </Td>
 
-                                    {/* 答题数 */}
                                     <Td>
                                         <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
                                             <Text textAlign="center">
-                                                {user.problemCount}
+                                                {user.passCount}
                                             </Text>
                                         </Flex>
                                     </Td>
