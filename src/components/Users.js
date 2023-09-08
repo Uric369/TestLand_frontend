@@ -26,7 +26,7 @@ const Users = ({title, captions, data, keyword}) => {
         return (
             <Card overflowX={{sm: "scroll", xl: "hidden"}}>
                 <CardBody>
-                    <Table variant='simple' color={textColor}>
+                    <Table variant='unstyled' color={textColor}>
                         <Thead>
                             <Tr my='.8rem' pl='0px' color='gray.400'>
                                 {captions.map((caption, idx) => {

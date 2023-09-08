@@ -57,7 +57,7 @@ const AdminUsers = () => {
 
       <Users
         title={"用户信息"}
-        captions={["用户Id", "用户名", "头像", "email", "电话", "地址", "状态"]}
+        captions={["用户Id", "用户名", "头像", "邮箱", "电话", "地址", "状态", "操作"]}
         data={userList}
         keyword={searchKeyword}
       />
