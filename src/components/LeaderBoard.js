@@ -110,12 +110,12 @@ function SignUp() {
                             mb='24px'
                             size='lg'
                         />
-                        <FormControl display='flex' alignItems='center' mb='24px'>
+                        {/* <FormControl display='flex' alignItems='center' mb='24px'>
                             <Switch id='remember-login' colorScheme='teal' me='10px'/>
                             <FormLabel htmlFor='remember-login' mb='0' fontWeight='normal'>
                                 Remember me
                             </FormLabel>
-                        </FormControl>
+                        </FormControl> */}
                         <Button
                             type='submit'
                             bg='teal.300'

@@ -21,7 +21,7 @@ function SignIn() {
     // Chakra color mode
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [isRemember, setIsRemember] = useState(false);
+    // const [isRemember, setIsRemember] = useState(false);
 
     const titleColor = useColorModeValue("teal.300", "teal.200");
     const textColor = useColorModeValue("gray.400", "white");
@@ -107,7 +107,7 @@ function SignIn() {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
-                            <FormControl display='flex' alignItems='center'>
+                            {/* <FormControl display='flex' alignItems='center'>
                                 <Switch
                                     id='remember-login'
                                     colorScheme='teal'
@@ -122,7 +122,7 @@ function SignIn() {
                                     fontWeight='normal'>
                                     Remember me
                                 </FormLabel>
-                            </FormControl>
+                            </FormControl> */}
                             <Button
                                 fontSize='10px'
                                 type='submit'
