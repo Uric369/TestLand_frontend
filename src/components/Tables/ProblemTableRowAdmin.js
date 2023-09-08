@@ -1,10 +1,11 @@
 import {Avatar, Badge, Button, Flex, Td, Text, Tr, useColorModeValue, Tag, Progress, Box} from "@chakra-ui/react";
-
-import React, {useState} from "react";
+import { Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader, DrawerOverlay, Heading } from "@chakra-ui/react";
+import React, {useState, useEffect} from "react";
 import {postRequest} from "../../utils/ajax";
-import {DelProblem} from "../../services/ProblemService";
+import {DelProblem, getProblemById} from "../../services/ProblemService";
 import {Dropdown} from "antd";
 import axios from "axios";
+import TestResultsChart from "../TestResultsChart";
 
 function ProblemTableRowAdmin(props) {
     const {
