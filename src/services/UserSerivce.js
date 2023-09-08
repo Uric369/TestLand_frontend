@@ -124,3 +124,8 @@ export function searchUsersByUsername(page, pageSize, keyword, callback) {
     const url = `http://localhost:8080/getUsersByKeyword?keyword=${keyword}&page=${page}&pageSize=${pageSize}`;
     postRequest(url, null, callback);
 }
+
+export const getTriedProblemList = (userId, callback) => {
+    const url = `http://localhost:8080/getTriedProblemList?userId=${userId}`;
+    postRequest(url, null, callback);
+};

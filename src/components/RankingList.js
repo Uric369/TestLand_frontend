@@ -9,23 +9,6 @@ function RankingList() {
     const bgColor = useColorModeValue("white", "gray.700");
     const bgIcons = useColorModeValue("teal.200", "rgba(255, 255, 255, 0.5)");
 
-    // const userList = [
-    //     {
-    //         username: "user1",
-    //         email: "user1email@1.com",
-    //         avatar: "https://bit.ly/dan-abramov",
-    //         passRate: "0.79",
-    //         problemCount: "13"
-    //     },
-    //     {
-    //         username: "user2",
-    //         email: "user1email1@2.com",
-    //         avatar: "https://bit.ly/dan-abramov",
-    //         passRate: "0.33",
-    //         problemCount: "13"
-    //     }
-    // ];
-
     const [userList, setUserList] = useState([]);
 
     useEffect(() => {
