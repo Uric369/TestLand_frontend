@@ -61,7 +61,12 @@ function PostBox(props) {
                                 <Spacer/>
 
 
-                                <Flex align="flex-end">
+                                
+                            </Flex>
+                        </Flex>
+
+                    </CardBody>
+                    <Flex justify="flex-end" alignSelf="flex-end" mb="20px" mr={"20px"}>
                                     <Box display="flex" alignItems="center" color="gray.500">
                                         <Icon as={BsEye} w={4} h={4} mr={1}/>
                                         <Text fontSize="sm">{post.browse}</Text>
@@ -82,11 +87,6 @@ function PostBox(props) {
                                         <Text fontSize="sm">{post.postTime}</Text>
                                     </Box>
                                 </Flex>
-                            </Flex>
-                        </Flex>
-
-                    </CardBody>
-
                 </Card>
             </Box>
         </NavLink>

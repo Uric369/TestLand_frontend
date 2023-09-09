@@ -87,7 +87,8 @@ const PostEditor = () => {
             coverURL:coverURL,
             text:vditor.getValue(),
             userId:user.userId,
-            username:user.username
+            username:user.username,
+            commentNum:0,
         }
         addPost(data,(res) => {
             console.log(res);

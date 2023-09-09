@@ -18,4 +18,16 @@ export const getPostByPostId = (postId, callback) => {
     postRequest_v2(url, data, callback);
 };
 
+export const getCommentsByPostId = (postId, callback) => {
+    const data = {postId: postId};
+    console.log("bypostId")
+    console.log(data);
+    const url = `http://localhost:8080/getCommentsByPostId`;
+    postRequest_v2(url, data, callback);
+};
 
+
+export const addComment = (data, callback) => {
+    const url = `http://localhost:8080/addComment`;
+    postRequest(url, data, callback);
+};

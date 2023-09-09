@@ -27,9 +27,6 @@ const ForumDetails = () => {
             >
                 <Flex flexDirection='column' pt={{base: "40px", md: "60px"}} pl={{base: "120px", md: "75px"}}>
                     <ForumInfo postId={postId}/>
-                    <br/>
-                    <br/>
-                    <Comments/>
                 </Flex>
                 <Flex flexDirection='column' pt={{base: "40px", md: "60px"}} px={{base: "120px", md: "75px"}}>
                     <Text fontSize="2xl" color={textColor} fontWeight={"bold"}>

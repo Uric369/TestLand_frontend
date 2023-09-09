@@ -9,6 +9,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useLocation } from 'react-router-dom';
 import MarkdownDisplay from "./Markdown/MarkDownDisplay";
+import { getCommentsByPostId } from "../services/PostService";
+import Comments from "./Comments";
 
 const ForumInfo = (props) => {
     const {postId}=props;
@@ -19,11 +21,14 @@ const ForumInfo = (props) => {
     const [browse,setBrowse]=useState();
     const [likes, setLikes] = useState();
 const [collect, setCollect] = useState();
-const [reply, setReply] = useState();
+const [reply, setReply] = useState([]);
 const [postTime, setPostTime] = useState();
+const [commentNum, setCommentNum] = useState();
 
-    console.log("hhhhhhhhhhhhhh");
-    console.log(postId);
+    // console.log("hhhhhhhhhhhhhh");
+    // console.log(postId);
+
+
 
 
         if(post==null){
@@ -39,11 +44,11 @@ const [postTime, setPostTime] = useState();
                 setSummary(data.data.summary);
                 setBrowse(data.data.browse);
                 setText(data.data.text);
-setReply(data.data.reply);
+// setReply(data.data.reply);
 setCollect(data.data.collect);
 setLikes(data.data.likes);
 setPostTime(data.data.postTime)
-
+setCommentNum(data.data.commentNum)
               })
               .catch(error => {
                 // 处理错误
@@ -59,7 +64,8 @@ setPostTime(data.data.postTime)
     const iconColor = useColorModeValue("gray.700", "gray.200");
 
     return (
-        <Box borderRadius="2xl" overflow="hidden" bg={bgModeColor} p="20px">
+        <div>
+        <Box borderRadius="2xl" overflow="hidden" bg={bgModeColor} p="40px">
             <Flex direction="column">
                 <Flex align="center" py=".8rem" minWidth="100%" flexWrap="nowrap">
                     {/* <Avatar src={post.avatar ? post.avatar : 'https://avatars.dicebear.com/api/male/username.svg'}
@@ -96,7 +102,7 @@ setPostTime(data.data.postTime)
                     </Box>
                     <Box display="flex" alignItems="center" color={iconColor} ml={3}>
                         <Icon as={BsChat} w={4} h={4} mr={1}/>
-                        <Text fontSize="sm">{reply}</Text>
+                        <Text fontSize="sm">{commentNum}</Text>
                     </Box>
                     <Box display="flex" alignItems="center" color={iconColor} ml={3}>
                         <Icon as={BsBookmark} w={4} h={4} mr={1}/>
@@ -108,6 +114,10 @@ setPostTime(data.data.postTime)
                 </Flex>
             </Flex>
         </Box>
+                            <br/>
+                            <br/>
+                            <Comments postId={postId} commentNum={commentNum}/>
+                            </div>
     )
 }
 
