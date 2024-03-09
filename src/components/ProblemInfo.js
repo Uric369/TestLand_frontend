@@ -1,6 +1,7 @@
 import {Badge, Box, Center, Divider, Flex, Tag, Text, useColorModeValue} from "@chakra-ui/react";
 import {useState} from "react";
 import ReactMarkdown from 'react-markdown';
+import MarkdownView from 'react-showdown';
 
 function processString(string) {
     let processedString = string.slice(2, -1); // 去掉头尾两个 "`"
@@ -65,9 +66,13 @@ const ProblemInfo = (props) => {
 
             <Divider my="20px" borderWidth="1.3px"/>
 
-            <ReactMarkdown>
+            {/* <ReactMarkdown>
                 {processString(problem.description)}
-            </ReactMarkdown>
+            </ReactMarkdown> */}
+            <MarkdownView
+        markdown={problem.description}
+        options={{ tables: true, emoji: true }}
+        />
             <Flex pt={{base: "20px", md: "30px"}} direction="column">
                 {problem.examples.map((example, index) => (
                     <Box

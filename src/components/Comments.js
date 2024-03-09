@@ -34,6 +34,16 @@ const Comments = (props) => {
     }, []);
 
     const handleReplyClick = (parentId) => {
+      console.log("aaaaaaaaaaaaaaaaaaaa?");
+      if (user == null) {
+        toast({
+          title: "请先登录",
+          status: "warning",
+          duration: 3000,
+          isClosable: true,
+      });
+      return;
+      }
         setShowInputBox(true);
         setParentId(parentId);
       };
@@ -45,11 +55,12 @@ const Comments = (props) => {
       const handleSend = () => {
         console.log("newComment");
         const newComment={
-            parentId:parentId,
-            userId:user.userId,
-            content:replyText,
-            postId:postId,
-        }
+          parentId:parentId,
+          userId:user.userId,
+          content:replyText,
+          postId:postId,
+      }
+      
         console.log("newComment");
         console.log(newComment);
 
@@ -92,7 +103,11 @@ const Comments = (props) => {
                 >
                     {commentNum} 条评论
                 </Text>
+               
             </Flex>
+            <Button colorScheme="blue" size="sm" onClick={() => handleReplyClick(null)}>
+  回复
+</Button>
             <Divider my="20px" borderWidth="1.3px"/>
             {/* 评论区展示开始 */}
             {reply.map((comment, index) => (
@@ -142,7 +157,11 @@ const Comments = (props) => {
         <Reply comments={comment.replies} parentName={comment.username} postId={postId}/>
         </Box>
       )}
-       {showInputBox && (
+       
+                </div>
+            ))}
+            {/* 评论区展示结束 */}
+            {showInputBox && (
   <Box p="10px" bg={bgModeColor} position="fixed" bottom="0" left="0" width="100%">
     <Flex justify="flex-end" h="40px">
       <CloseButton size="sm" onClick={() => setShowInputBox(false)} />
@@ -163,9 +182,6 @@ const Comments = (props) => {
     </Flex>
   </Box>
 )}
-                </div>
-            ))}
-            {/* 评论区展示结束 */}
         </Box>
     );
 };

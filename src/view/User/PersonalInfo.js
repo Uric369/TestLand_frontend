@@ -94,7 +94,9 @@ const PersonalInfo = () => {
                             </Flex>
                             <Text fontSize="3xl" align="center">{user.username}</Text>
                         </Box>
-                        <Tabs variant="enclosed" colorScheme="teal" variant="solid-rounded" orientation="vertical"
+                        {/* <Tabs variant="enclosed" colorScheme="teal" variant="solid-rounded" orientation="vertical"
+                              onChange={(index) => setSelectedTab(index)}> */}
+                                 <Tabs variant="enclosed" colorScheme="teal" orientation="vertical"
                               onChange={(index) => setSelectedTab(index)}>
                             <TabList>
                                 <Tab>个人信息</Tab>
