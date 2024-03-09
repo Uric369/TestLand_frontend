@@ -58,4 +58,4 @@
 |--------------|------------|-------------------|
 | 讨论区 | ![image](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/light/discussion.png)| ![image](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/dark/discussion.png)| 
 | 帖子 | ![image](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/light/forumInfo.png)| ![image](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/dark/forumInfo.png)| 
-| ![example1_input](https://i.imgur.com/xCFLWda.png) | ![example1_ref](https://i.imgur.com/HZsiqyQ.jpeg) | ![example1_mt](https://i.imgur.com/jxeidOD
+| 帖子内容Markdown编辑 | ![image]([https://i.imgur.com/HZsiqyQ.jpeg](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/light/postEditor.png) |  |
