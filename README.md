@@ -50,4 +50,7 @@
 - Docker：通过使用Docker container进行评测，将每次评测任务独立地与服务器主机分隔，增加了安全性和并行性。
 - RabbitMQ：通过使用消息队列，用户提交代码后不会由于等待评测造成数据丢失。多线程对队列中的评测信息进行处理，提高响应速度。
 
+## 视频图片效果展示
+
+[题库 & 编辑代码 & 代码测评 视频展示](https://github.com/Uric369/TestLand_frontend/blob/62e9e192386a7f1db9bf1ff1bd50fa46c33a8185/video%26image/testland.mp4)
 
