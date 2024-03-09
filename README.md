@@ -56,7 +56,6 @@
 
 | 界面  | Light Mode  | Dark Mode |
 |--------------|------------|-------------------|
-| 讨论区 | ![image](https://github.com/Uric369/TestLand_frontend/blob/4a908e896d905a103d9bbe901b82e48b2106947c/video%26image/light/discussion.png)| ![image](https://github.com/Uric369/TestLand_frontend/blob/4a908e896d905a103d9bbe901b82e48b2106947c/video%26image/dark/discussion.png)| 
-| ![example1_input](https://i.imgur.com/PHtfrPk.png) | ![example1_ref](https://i.imgur.com/LULa5k0.png) | ![example1_mt](https://i.imgur.com/RAYarUL.jpeg)         | ![example1_lt](https://i.imgur.com/ueoePsi.jpeg)         | ![example1_pdf-reg](https://i.imgur.com/rYHJW47.jpeg)             |
-| ![example1_input](https://i.imgur.com/xCFLWda.png) | ![example1_ref](https://i.imgur.com/HZsiqyQ.jpeg) | ![example1_mt](https://i.imgur.com/jxeidOD.jpeg)         | ![example1_lt](https://i.imgur.com/GIUz83F.jpeg)         | ![example1_pdf-reg](https://i.imgur.com/faqeIdT.jpeg)             |
-
+| 讨论区 | ![image](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/light/discussion.png)| ![image](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/dark/discussion.png)| 
+| 帖子 | ![image](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/light/forumInfo.png)| ![image](https://github.com/Uric369/TestLand_frontend/blob/main/video%26image/dark/forumInfo.png)| 
+| ![example1_input](https://i.imgur.com/xCFLWda.png) | ![example1_ref](https://i.imgur.com/HZsiqyQ.jpeg) | ![example1_mt](https://i.imgur.com/jxeidOD
