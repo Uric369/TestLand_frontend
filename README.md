@@ -54,3 +54,9 @@
 
 [题库 & 编辑代码 & 代码测评 视频展示](https://github.com/Uric369/TestLand_frontend/blob/62e9e192386a7f1db9bf1ff1bd50fa46c33a8185/video%26image/testland.mp4)
 
+| 界面  | Light Mode  | Dark Mode |
+|--------------|------------|-------------------|
+| 讨论区 | ![image](https://github.com/Uric369/TestLand_frontend/blob/4a908e896d905a103d9bbe901b82e48b2106947c/video%26image/light/discussion.png)| ![image](https://github.com/Uric369/TestLand_frontend/blob/4a908e896d905a103d9bbe901b82e48b2106947c/video%26image/dark/discussion.png)| 
+| ![example1_input](https://i.imgur.com/PHtfrPk.png) | ![example1_ref](https://i.imgur.com/LULa5k0.png) | ![example1_mt](https://i.imgur.com/RAYarUL.jpeg)         | ![example1_lt](https://i.imgur.com/ueoePsi.jpeg)         | ![example1_pdf-reg](https://i.imgur.com/rYHJW47.jpeg)             |
+| ![example1_input](https://i.imgur.com/xCFLWda.png) | ![example1_ref](https://i.imgur.com/HZsiqyQ.jpeg) | ![example1_mt](https://i.imgur.com/jxeidOD.jpeg)         | ![example1_lt](https://i.imgur.com/GIUz83F.jpeg)         | ![example1_pdf-reg](https://i.imgur.com/faqeIdT.jpeg)             |
+
